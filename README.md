@@ -3,21 +3,43 @@
 An end-to-end AI system to detect deepfake voice recordings using both **audio features** and **transcribed text** from the audio. 
 This project uses **XGBoost classifiers** trained on engineered features and **OpenAI Whisper** for transcription.
 
-## 🚀 Features
+## 🚀 Key Features
 
-- 🎧 Extracts 43 audio-based features (MFCCs, pitch variance, spectral contrast, etc.)
-- 📝 Generates transcripts using Whisper and processes text via TF-IDF
-- 🤖 Trains three models: audio-only, text-only, and combined
-- 📊 Evaluates models with confusion matrix, ROC-AUC, and classification report
-- 💡 Provides **explainable output** to understand prediction reasoning
-- 🌐 Includes an interactive **Streamlit web app** for real-time prediction
+- 🎧 **Extracts 43 audio features**:
+  - MFCCs
+  - Delta MFCCs
+  - Pitch variance
+  - Spectral contrast
+  - Spectral flux
+- 📝 **Transcribes audio using OpenAI Whisper**
+- 🧠 **Trains three XGBoost models**:
+  - Audio-only
+  - Text-only
+  - Combined (audio + text)
+- 📊 **Evaluates all models**:
+  - Confusion matrix
+  - ROC-AUC
+  - Classification report
+- 💬 **Interpretable predictions**:
+  - Custom logic explains why a sample is classified as fake or real
+- 🌐 **Streamlit Web App**:
+  - Upload `.wav` or `.mp3` files
+  - Get instant predictions with reasoning
+- 💾 **Preprocessed CSVs, saved models, and visualizations** included
+
+---
 
 ## 🧠 Tech Stack
 
-- **Python**, **Librosa**, **Whisper**
-- **XGBoost**, **scikit-learn**
-- **Streamlit** for UI
-- **Pandas**, **TQDM**, **Joblib**
+- **Python 3.11**
+- **Librosa** – Audio feature extraction
+- **OpenAI Whisper** – Transcription
+- **XGBoost** – Classification
+- **Scikit-learn** – Preprocessing, evaluation
+- **Streamlit** – Frontend interface
+- **Pandas**, **Joblib**, **TQDM**
+
+---
 
 ## 📂 Project Structure
 
@@ -37,13 +59,52 @@ This project uses **XGBoost classifiers** trained on engineered features and **O
 | Text-only    | ~56%     | ~0.58   |
 | Combined     | **~80%** | **0.87** |
 
-## 🔬 How It Works
 
-1. **Audio Feature Extraction**: MFCCs, pitch, spectral contrast, etc.
-2. **Text Transcript Generation**: Uses Whisper model to transcribe.
-3. **Vectorization**: TF-IDF for text + StandardScaler for audio.
-4. **Model Training**: Trains XGBoost on audio, text, and combined inputs.
-5. **Prediction**: Final decision made using combined model and fallback logic.
-6. **Explanation**: Interpretable reasons provided for every prediction.
+## 🔍 How It Works
 
+1. **Audio Feature Extraction**  
+   43 custom audio features from each `.wav`/`.mp3` file using `librosa`
 
+2. **Text Transcription**  
+   Uses OpenAI Whisper to convert speech to text
+
+3. **Vectorization**  
+   - Audio → Scaled with `StandardScaler`  
+   - Text → Transformed via `TfidfVectorizer` (1000 features)
+
+4. **Model Training**  
+   Trains 3 models:
+   - Audio-only
+   - Text-only
+   - Combined (audio + transcript)
+
+5. **Prediction Logic**  
+   Uses probabilities from all models to make a final prediction with custom fallback logic:
+
+6. **Explainability**
+
+Every prediction includes:
+
+- 🔊 Audio patterns (e.g., pitch, spectral variation)
+- 📝 Text traits (length, punctuation, case)
+- 🔀 Combined logic reasoning
+
+7. **🔮 Sample Output**
+
+✅ Final Prediction: Fake
+📄 Transcript: "Hi there, I'm an AI-generated voice used for testing."
+
+📌 Reasoning:
+- 🔊 High variation in audio frequencies.
+- 🎤 Unusual pitch variation detected.
+- 📜 Transcript is long and coherent.
+- 🔀 Combined analysis of audio and text features.
+
+8. **🏆 Achievements**
+
+- ✅ End-to-end audio+NLP pipeline
+- ✅ Handles edge cases & borderline decisions
+- ✅ Real-time usable with GUI
+- ✅ Combines ML, audio signal processing, and LLM transcription
+
+**⭐ If you liked this project, consider starring the repo!**
