@@ -26,7 +26,6 @@ This project uses **XGBoost classifiers** trained on engineered features and **O
 ├── feature_extraction.py
 ├── vectorize_features.py
 ├── train_xgboost.py
-├── prediction.py
 ├── app.py
 
 
