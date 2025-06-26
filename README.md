@@ -89,7 +89,7 @@ Every prediction includes:
 - 📝 Text traits (length, punctuation, case)
 - 🔀 Combined logic reasoning
 
-7. **🔮 Sample Output**
+## 🔮 Sample Output
 
 ✅ Final Prediction: Fake
 📄 Transcript: "Hi there, I'm an AI-generated voice used for testing."
@@ -100,7 +100,7 @@ Every prediction includes:
 - 📜 Transcript is long and coherent.
 - 🔀 Combined analysis of audio and text features.
 
-8. **🏆 Achievements**
+## 🏆 Achievements
 
 - ✅ End-to-end audio+NLP pipeline
 - ✅ Handles edge cases & borderline decisions
