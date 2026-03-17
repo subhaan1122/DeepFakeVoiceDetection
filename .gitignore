@@ -37,6 +37,10 @@ artifacts/
 plots/
 features/*_backup.csv
 features/*_features.csv
+train_metadata.csv
+val_metadata.csv
+test_metadata.csv
+*.pkl
 
 # Temporary files
 *.tmp
